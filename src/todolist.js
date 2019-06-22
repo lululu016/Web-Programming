@@ -6,16 +6,11 @@ function $(id) {
 }
 
 function setStyleSheet(title){  
-    // 首先找到DOM中所有的link标签
     var link_list = document.getElementsByTagName("link");
     if ( link_list ){
         for ( var i=0;i<link_list.length;i++ ){
-            // 要找到所有link中rel属性值包括style的，也就是包括stylesheet和alternate stylesheet;
             if ( link_list[i].getAttribute("rel").indexOf("style") != -1 ){
-                // 将符合条件的link的disabled的属性设为true，都改为禁用；
                 link_list[i].disabled = true;
-                // 然后判断link标签中的title属性，找到我们需要替换的css文件
-                // 找到后将该link的disabled改为启用；
                 if ( link_list[i].getAttribute("title") === title){
                     link_list[i].disabled = false;
                 }
@@ -24,12 +19,7 @@ function setStyleSheet(title){
     }
 }
 
-window.onload = function() {
-    // execute callback function after data loaded
-    //$('clear_completed').style.visibility="hidden";
-    // $('color').style.display="none";
-    // $('background').style.display="none";
-    
+window.onload = function() {    
     model.init(function() {
         var data = model.data;
         data.filter="ALL";
@@ -43,31 +33,22 @@ window.onload = function() {
             }
             $('todo').value='';
 
-            // 获取当前日期
+            //time
             var date = new Date();
-
-            // 获取当前月份
             var nowMonth = date.getMonth() + 1;
-
-            // 获取当前是几号
             var strDate = date.getDate();
-
-            // 添加分隔符“-”
             var seperator = "-";
             
-            // 对月份进行处理，1-9月在前面添加一个“0”
             if (nowMonth >= 1 && nowMonth <= 9) {
             nowMonth = "0" + nowMonth;
             }
 
-            // 对月份进行处理，1-9号在前面添加一个“0”
             if (strDate >= 0 && strDate <= 9) {
             strDate = "0" + strDate;
             }
-            var hour=date.getHours();  // 获取小时数(0-23)
-            var minutes=date.getMinutes();  // 获取分钟数(0-59)
-            var seconds=date.getSeconds();  // 获取秒数(0-59)
-            // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+            var hour=date.getHours(); 
+            var minutes=date.getMinutes(); 
+            var seconds=date.getSeconds();
             var nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate+" "+hour+":"+minutes+":"+seconds;
 
             console.log(nowDate);
@@ -78,11 +59,6 @@ window.onload = function() {
                 time:nowDate
               };
             data.items.splice(data.items.length-data.topping, 0, content);
-            // data.items.push({
-            //     entry: todo,
-            //     completed: false,
-            //     priority:0
-            //   }); 
         } 
 
 
@@ -96,6 +72,8 @@ window.onload = function() {
             addEntry();
             update();
           });
+
+        //filter
         $('all').addEventListener('click', function() {
             data.filter='ALL';
             update();
@@ -108,23 +86,9 @@ window.onload = function() {
             data.filter='COMPLETED';
             update();
         });
+
         //clear all completed
         $('clear_completed').addEventListener('click',function(){
-            // data.items.forEach(function(entry,index) {
-            //     if(entry.completed){
-            //         data.items.splice(index,1);
-            //     }
-            // });
-            // data.items.forEach(function(entry,index) {
-            //     if(entry.completed){
-            //         data.items.splice(index,1);
-            //     }
-            // });
-            // data.items.forEach(function(entry,index) {
-            //     if(entry.completed){
-            //         data.items.splice(index,1);
-            //     }
-            // });
             for(var i = data.items.length-1;i>=0;i--){
                 if(data.items[i].completed){
                     data.items.splice(i,1);
@@ -132,6 +96,8 @@ window.onload = function() {
             }
             update(); 
         });
+
+        //toggle all
         $('toggle_all').addEventListener('click',function(){
             if(toggle==0){
                 data.items.forEach(function(entry,index) {
@@ -147,33 +113,8 @@ window.onload = function() {
             }
             update();
         });
-        // $('changeColor').addEventListener('click',function(){
-        //     $('background').style.display="none";
-        //     if($('color').style.display=="none"){
-        //         $('color').style.display="block";
-        //         $('blueTheme').addEventListener('click',function(){
-        //             setStyleSheet('blue');
-        //             data.theme='blue';
-        //             update();
-        //         });
-        //         $('pinkTheme').addEventListener('click',function(){
-        //             setStyleSheet('pink');
-        //             data.theme='pink';
-        //             update();
-        //         });
-        //         $('greenTheme').addEventListener('click',function(){
-        //             setStyleSheet('green');
-        //             data.theme='green';
-        //             update();
-        //         });
-        //     }
-        //     else{
-        //         $('color').style.display="none";
-        //     }
-            
-        //     update();
-        // });
         
+        //change theme
         $('changeColor').addEventListener('click',function(){
             if(document.body.contains($('background'))){
                 $('background').style.display="none";
@@ -223,33 +164,11 @@ window.onload = function() {
                 data.theme='green';
                 update();
             });
-            // $('color').addEventListener('click',function(e){
-            //     if(e.target.id!='color'){
-            //         body.removeChild(color);
-            //     }
-            // });
 
             update();
         });
 
-
-        // $('changeBg').addEventListener('click',function(){
-        //     $('color').style.display="none";
-        //     if($('background').style.display=="none"){
-        //         $('background').style.display="block";
-        //         $('bg').addEventListener('change',function(){
-        //             document.body.style.background = this.value;
-        //             console.log(this.value);
-        //         });
-                
-        //     }
-        //     else{
-        //         $('background').style.display="none";
-        //     }
-            
-        //     update();
-        // });
-        
+        //change background
         $('changeBg').addEventListener('click',function(){  
             if(document.body.contains($('color'))){
                 $('color').style.display="none";
@@ -266,7 +185,6 @@ window.onload = function() {
             } 
             
             var bg=document.createElement("div");
-            //color.classList.add("color");
             bg.setAttribute('id','background');
             bg.innerHTML="Please choose color:";
             var title=$('h');
@@ -292,18 +210,21 @@ function update(){
     model.flush();
     var data = model.data;
     data.topping='0';
+
+    //show topping entry first
     data.items.forEach(function(entry,index) {
         if(entry.priority==1){
             number=Number(data.topping)+1;
             data.topping=String(number);
         }
     });
-    console.log("topping:"+data.topping);
+
     var left=0;
     $('all').classList.remove("clicked");
     $('active').classList.remove("clicked");
     $('completed').classList.remove("clicked");
     $('boundary').innerHTML='';
+
     //theme
     if(data.theme=='pink'){
         setStyleSheet('pink');
@@ -315,6 +236,7 @@ function update(){
     if(data.theme=='green'){
         setStyleSheet('green');
     }
+
     data.items.forEach(function(entry,index) {
         var item = document.createElement('div');
         item.className = 'entry';
@@ -330,6 +252,7 @@ function update(){
             item.classList.add("completed");
         }
         
+        //render entries
         var Hammer_item = new Hammer(item);
         if(data.filter=='ALL'){
             if(!entry.completed){
@@ -431,12 +354,12 @@ function update(){
             edit.focus();
             
          });
+
+         //swipe left to delete or topping
          Hammer_item.on("swipeleft", function () {
             if(item.classList.contains("entryleft")){
                 return 0;
             }
-            //time.classList.add("time-left");
-            //time.classList.remove("time");
             time.style.display="none";
             if(!entry.completed){
                 item.classList.add("entryleft");
@@ -450,6 +373,7 @@ function update(){
                     down_button.classList.add("canceltopping");
                     down_button.innerHTML="Cancel";
                     itemDiv.appendChild(down_button);
+                    // cancel topping
                     down_button.addEventListener('click',function(){
                         data.items.splice(index,1);
                         data.items.splice(data.items.length-data.topping+1, 0, entry);
@@ -463,12 +387,12 @@ function update(){
                     up_button.classList.add("upbutton");
                     up_button.innerHTML="Topping";
                     itemDiv.appendChild(up_button);
+                    //topping
                     if(!entry.completed){
                         up_button.addEventListener('click',function(){
                             data.items.push(entry);
                             data.items.splice(index,1);
                             entry.priority=1;
-                            
                             update();
                         });
                     }
@@ -486,28 +410,23 @@ function update(){
                 delete_button.innerHTML="Delete";
                 itemDiv.appendChild(delete_button);
             }
+
              //delete
             delete_button.addEventListener('click', function() {
                 
                 data.items.splice(index,1);
                 update();
             });
-            //topping
             
-            
-
+        
             itemDiv.addEventListener('blur', function() {
                 itemDiv.removeChild("deletebutton");
                 itemDiv.removeChild("upbutton");
                 item.classList.add("entry");
                 item.classList.remove("entryleft");
-            }, false);
-
-            
+            }, false); 
          });
     });
-
-
     $('num').innerHTML=left;
 }
 
