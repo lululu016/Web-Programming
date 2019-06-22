@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1" name="viewport"/>
+        <!-- <link href="todolist.css" type="text/css" rel="stylesheet" /> -->
+        <link rel="stylesheet" type="text/css" href="todolist-pink.css" title="pink">
+        <link rel="alternate stylesheet" type="text/css" href="todolist-blue.css" title="blue">
+        <link rel="alternate stylesheet" type="text/css" href="todolist-green.css" title="green">
+        <script src="hammer.min.js"></script>
+    </head>
+    <body id="body">
+    <div><button id="changeColor">Theme</button><button id="changeBg">Background</button></div>
+    <!-- <div class="color">Please choose color:<button id="blueTheme">Blue</button><button id="pinkTheme">Pink</button><button id="greenTheme">Green</button></div>
+    <div id="background">
+        Please choose color:
+        <input type="color" id="bg"></div> -->
+    <h1 id="h">Todo List</h1>
+      <button class="toggle_all" id="toggle_all"></button><input type="text" id="todo" placeholder="to do something" autofocus><button id="add"></button>
+      <div id="list">
+          <div id="boundary">
+                <div>
+
+                </div>
+          </div>
+          <div class="foot"><span class="count"><span id="num"></span> items left</span><a id="clear_completed">Clear All Completed</a></div>
+          <div class="filter"><button id="all">All</button><button id="active">Active</button><button id="completed">Completed</button></div>
+      </div>
+    </body>
+</html>
+<script src="model.js"></script>
+<script src="provider-localStorage.js"></script>
+<script src="todolist.js"></script> 
