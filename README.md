@@ -44,7 +44,7 @@
 
 ​	左滑条目点击置顶后（图一），该条目会被展示在列表最顶端，并且改变字体颜色。当改条目被置顶后，左滑的按钮变为取消置顶（图三），点击取消置顶，条目将会变回正常状态，展示于所有置顶条目之下。若一项条目为已完成状态，则不可以进行置顶操作，只有删除按钮（图二）。
 
-![屏幕快照 2019-06-22 上午1.30.09](https://github.com/lululu016/Web-Programming/raw/master/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-22%20%E4%B8%8A%E5%8D%881.17.19.png)
+![屏幕快照 2019-06-22 上午1.30.09](https://github.com/lululu016/Web-Programming/raw/master/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-22%20%E4%B8%8A%E5%8D%881.30.09.png)
 
 ​	
 
@@ -62,7 +62,7 @@ Hammer_item.on("swipeleft", function () {
 
 #### 2.3 更改主题
 
-​	点击页面上方的Theme按钮将会展示三种不同颜色的主题，点击某一颜色按钮即可改变对应主题。主题状态将会被保存，刷新页面后依然后刷新前的主题。![image](http://github.com/lululu016/Web-Programming/blob/master/assets/屏幕快照 2019-06-22 上午1.35.25.png)
+​	点击页面上方的Theme按钮将会展示三种不同颜色的主题，点击某一颜色按钮即可改变对应主题。主题状态将会被保存，刷新页面后依然后刷新前的主题。![屏幕快照 2019-06-22 上午1.30.09](https://github.com/lululu016/Web-Programming/raw/master/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-22%20%E4%B8%8A%E5%8D%881.17.19.png)
 
 ​	这里我们用到alternate属性，用来替换css文件。link标签中的rel属性值为stylesheet，就是当前页面所加载显示的css样式文件。而alternate stylesheet就是用来做替换用的，写在head中时不会被显示出来，但是会加载到浏览器中。html部分如下：
 
@@ -100,7 +100,7 @@ function setStyleSheet(title){
 
 ​	点击页面上方的Background按钮即可点击颜色框选择颜色，确定后即可改变背景颜色。但在手机端没有选择颜色的input，我们需要手动输入颜色值。
 
-![屏幕快照 2019-06-22 上午1.35.25](https://github.com/lululu016/Web-Programming/blob/master/assets/屏幕快照 2019-06-22 上午1.35.25.png)
+![屏幕快照 2019-06-22 上午1.35.25](https://github.com/lululu016/Web-Programming/raw/master/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-22%20%E4%B8%8A%E5%8D%881.35.25.png)
 
 ​	实现方法较为简单，即将type为color的input的value赋给body的background-color。
 
@@ -120,7 +120,7 @@ $('bg').addEventListener('change',function(){
 
 ​	列表将以置顶条目、未完成条目与已完成条目的顺序进行展示，当一个条目改变状态时，会实时改变位置到其相应的位置上。如下图：蓝色为置顶条目、黑色为未完成条目、灰色带划线为已完成条目。
 
-![屏幕快照 2019-06-22 上午1.27.11](https://github.com/lululu016/Web-Programming/blob/master/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-22%20%E4%B8%8A%E5%8D%881.27.11.png)
+![屏幕快照 2019-06-22 上午1.27.11](https://github.com/lululu016/Web-Programming/raw/master/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-22%20%E4%B8%8A%E5%8D%881.27.11.png)
 
 ​	在model.data.items中加入previlage字段以记录该元素是否被置顶，在model.data中加入topping字段记录目前列表中被置顶的条目数。
 
