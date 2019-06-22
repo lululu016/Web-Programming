@@ -62,7 +62,7 @@ Hammer_item.on("swipeleft", function () {
 
 #### 2.3 更改主题
 
-​	点击页面上方的Theme按钮将会展示三种不同颜色的主题，点击某一颜色按钮即可改变对应主题。主题状态将会被保存，刷新页面后依然后刷新前的主题。![屏幕快照 2019-06-22 上午1.17.19](https://github.com/lululu016/Web-Programming/blob/master/assets/屏幕快照 2019-06-22 上午1.17.19.png)
+​	点击页面上方的Theme按钮将会展示三种不同颜色的主题，点击某一颜色按钮即可改变对应主题。主题状态将会被保存，刷新页面后依然后刷新前的主题。![image](http://github.com/lululu016/Web-Programming/blob/master/assets/屏幕快照 2019-06-22 上午1.35.25.png)
 
 ​	这里我们用到alternate属性，用来替换css文件。link标签中的rel属性值为stylesheet，就是当前页面所加载显示的css样式文件。而alternate stylesheet就是用来做替换用的，写在head中时不会被显示出来，但是会加载到浏览器中。html部分如下：
 
