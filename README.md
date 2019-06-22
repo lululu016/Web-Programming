@@ -165,4 +165,8 @@ entry.priority=1;
 
 
 
-#### 
+#### 3 参考
+
+provider-localStorage.js 和 model.js 参考了老师的github
+
+格式化时间戳参考<https://www.jianshu.com/p/3415c3aa722d>
